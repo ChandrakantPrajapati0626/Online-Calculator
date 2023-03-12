@@ -2,111 +2,67 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Calculator</title>
-    <style>
-        .calculator-container {
-            height: 510px;
-            width: 450px;
-            background-color: #0d0d0d;
-            border-radius: 16px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 70px;
-            box-shadow: 2px white solid;
-
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function handleClick(val) {
+            const inputBox = document.getElementById("calc-screen");
+            inputBox.value = (inputBox.value + val);
         }
 
-        .brand-name {
-            color: white;
-            margin-left: 15px;
-            display: block;
-            padding-top: 12px;
-            font-size: 20px;
+        function clearScreen() {
+            const inputBox = document.getElementById("calc-screen");
+            inputBox.value = " ";
         }
 
-        .calc-screen {
-            width: 405px;
-            font-size: 50px;
-            height: 63px;
-            background-color: #c2c2a3;
-            margin-left: 18px;
-            margin-right: auto;
-            margin-bottom: 20px;
+        function calculate() {
+            const inputBox = document.getElementById("calc-screen");
+            const ans = eval(inputBox.value)
+            inputBox.value = ans;
         }
-        .button {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-        }
-        .calc-button {
-            background-color: white;
-            height: 50px;
-            width: 65px;
-            font-size: 22px;
-            margin: 8px;
-            border-radius: 8px;
-            border: 2px solid #808080;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .calc-button:hover {
-            box-shadow: 0 2px 5px white;
-            transition: 0.3s;
-        }
-        .bg-red {
-            background-color:#ff3300;
-            color: white;
-        }
-        h1 {
-            text-align: center;
-            font-size: 50px;
-            text-shadow: 2px 2px 5px black;
-        }
-    </style>
+
+    </script>
 </head>
 
 <body>
     <h1>My-Calculator!</h1>
     <div class="calculator-container">
         <p class="brand-name">RTC</p>
-        <input type="text" class="calc-screen">
+        <input type="text" class="calc-screen" id="calc-screen">
         <div class="button">
-            <button class="calc-button bg-red ">C </button>
-            <button class="calc-button bg-red ">CE </button>
-            <button class="calc-button"> M-</button>
-            <button class="calc-button"> M+</button>
-            <button class="calc-button">MRC </button>
+            <button class="calc-button bg-red " onclick="handleClick('C')">C </button>
+            <button class="calc-button bg-red " onclick="clearScreen()">CE </button>
+            <button class="calc-button" onclick="handleClick('M-')"> M-</button>
+            <button class="calc-button" onclick="handleClick('M+')"> M+</button>
+            <button class="calc-button" onclick="handleClick('MRC')">MRC </button>
         </div>
         <div class="button">
-            <button class="calc-button">7 </button>
-            <button class="calc-button">8</button>
-            <button class="calc-button"> 9</button>
-            <button class="calc-button"> %</button>
-            <button class="calc-button">√ </button>
+            <button class="calc-button" onclick="handleClick(7)">7 </button>
+            <button class="calc-button" onclick="handleClick(8)">8</button>
+            <button class="calc-button" onclick="handleClick(9)"> 9</button>
+            <button class="calc-button" onclick="handleClick('%')"> %</button>
+            <button class="calc-button" onclick="handleClick('+')">+ </button>
         </div>
         <div class="button">
-            <button class="calc-button">4 </button>
-            <button class="calc-button">5 </button>
-            <button class="calc-button">6</button>
-            <button class="calc-button">*</button>
-            <button class="calc-button">÷ </button>
+            <button class="calc-button" onclick="handleClick(4)">4 </button>
+            <button class="calc-button" onclick="handleClick(5)">5 </button>
+            <button class="calc-button" onclick="handleClick(6)">6</button>
+            <button class="calc-button" onclick="handleClick('*')">*</button>
+            <button class="calc-button" onclick="handleClick('/')">/ </button>
         </div>
         <div class="button">
-            <button class="calc-button">1 </button>
-            <button class="calc-button">2 </button>
-            <button class="calc-button">3</button>
-            <button class="calc-button">lock</button>
-            <button class="calc-button">-</button>
+            <button class="calc-button" onclick="handleClick(1)">1 </button>
+            <button class="calc-button" onclick="handleClick(2)">2 </button>
+            <button class="calc-button" onclick="handleClick(3)">3</button>
+            <button class="calc-button" onclick="handleClick('')">lock</button>
+            <button class="calc-button" onclick="handleClick('-')">-</button>
         </div>
         <div class="button">
-            <button class="calc-button">0</button>
-            <button class="calc-button">.</button>
-            <button class="calc-button"> +/-</button>
-            <button class="calc-button">_</button>
-            <button class="calc-button bg-red ">=</button>
+            <button class="calc-button" onclick="handleClick('0')">0</button>
+            <button class="calc-button" onclick="handleClick('.')">.</button>
+            <button class="calc-button" onclick="handleClick('C')"> +/-</button>
+            <button class="calc-button" onclick="handleClick('_')">_</button>
+            <button class="calc-button bg-red" onclick="calculate()">=</button>
         </div>
     </div>
 
